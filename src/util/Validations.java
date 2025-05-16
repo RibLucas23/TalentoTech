@@ -101,6 +101,18 @@ public class Validations {
       }
    }
 
+   public static boolean confirmar(String mensaje) {
+      while (true) {
+         System.out.print(mensaje);
+         String r = sc.nextLine().trim().toLowerCase();
+         if (r.equals("s"))
+            return true;
+         if (r.equals("n"))
+            return false;
+         System.out.println("Entrada inválida. Use 's' o 'n'.");
+      }
+   }
+
    public static Scanner getScanner() {
       return sc;
    }
