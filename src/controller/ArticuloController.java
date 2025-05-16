@@ -3,43 +3,15 @@ package src.controller;
 import src.model.Articulo;
 import src.service.ArticuloService;
 import src.util.Validations;
-import java.util.Scanner;
 
 public class ArticuloController {
-   private final ArticuloService service = new ArticuloService();
+   private final ArticuloService service;
 
-   public void iniciar() {
-      Scanner sc = Validations.getScanner();
-      int opcion = 0;
-
-      while (opcion != 5) {
-         System.out.println("\n--- Menú de Gestión de Artículos ---");
-         System.out.println("1. Crear artículo");
-         System.out.println("2. Listar artículos");
-         System.out.println("3. Modificar artículo");
-         System.out.println("4. Eliminar artículo");
-         System.out.println("5. Salir");
-         System.out.print("Ingrese una opción: ");
-
-         if (sc.hasNextInt()) {
-            opcion = sc.nextInt();
-            sc.nextLine();
-            switch (opcion) {
-               case 1 -> crearArticulo();
-               case 2 -> listarArticulos();
-               case 3 -> modificarArticulo();
-               case 4 -> eliminarArticulo();
-               case 5 -> System.out.println("Saliendo...");
-               default -> System.out.println("Opción inválida.");
-            }
-         } else {
-            System.out.println("Entrada inválida.");
-            sc.nextLine();
-         }
-      }
+   public ArticuloController(ArticuloService service) {
+      this.service = service;
    }
 
-   private void crearArticulo() {
+   public void crearArticulo() {
       int id = Validations.leerIdUnico(service.getArticulos());
       String nombre = Validations.leerNombre();
       double precio = Validations.leerPrecio();
@@ -48,7 +20,7 @@ public class ArticuloController {
       System.out.println("Artículo agregado.");
    }
 
-   private void listarArticulos() {
+   public void listarArticulos() {
       if (service.getArticulos().isEmpty()) {
          System.out.println("No hay artículos cargados.");
       } else {
@@ -58,9 +30,9 @@ public class ArticuloController {
       }
    }
 
-   private void modificarArticulo() {
+   public void modificarArticulo() {
       int id = Validations.leerId();
-      Articulo articulo = service.buscarPorId(id);
+      Articulo articulo = service.buscarArticuloPorId(id);
       if (articulo == null) {
          System.out.println("Artículo no encontrado.");
          return;
@@ -74,9 +46,9 @@ public class ArticuloController {
       System.out.println("Artículo modificado.");
    }
 
-   private void eliminarArticulo() {
+   public void eliminarArticulo() {
       int id = Validations.leerId();
-      Articulo articulo = service.buscarPorId(id);
+      Articulo articulo = service.buscarArticuloPorId(id);
       if (articulo == null) {
          System.out.println("Artículo no encontrado.");
          return;

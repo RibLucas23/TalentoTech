@@ -7,19 +7,22 @@ Este es un sistema simple de gestión de artículos que funciona desde la termin
 ```bash
 src/
 │
-├── controller/
-│   └── ArticuloController.java     # Lógica de flujo de la aplicación
+├── controller/              # Maneja la interacción con el usuario y controla el flujo
+│   ├── ArticuloController.java
+│   └── PedidoController.java
 │
-├── service/
-│   └── ArticuloService.java        # Lógica de negocio y almacenamiento de artículos
+├── service/                 # Contiene la lógica de negocio y manipulación de datos
+│   ├── ArticuloService.java
+│   └── PedidoService.java
 │
-├── model/
-│   └── Articulo.java               # Clase que representa un artículo (modelo de datos)
+├── model/                   # Define las entidades principales del sistema
+│   ├── Articulo.java
+│   └── Pedido.java
 │
-├── util/
-│   └── Helpers.java                # Validaciones y utilidades para entrada del usuario
+├── util/                    # Utilidades para validaciones y entrada de datos
+│   └── Helpers.java
 │
-└── Main.java                       # Punto de entrada de la aplicación
+└── Main.java                # Entrada principal y menú de la aplicación
 ```
 
 ## 🧠 ¿Por qué elegí esta arquitectura?

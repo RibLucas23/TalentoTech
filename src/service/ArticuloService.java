@@ -16,7 +16,7 @@ public class ArticuloService {
       lista.add(articulo);
    }
 
-   public Articulo buscarPorId(int id) {
+   public Articulo buscarArticuloPorId(int id) {
       for (Articulo a : lista) {
          if (a.getId() == id)
             return a;
