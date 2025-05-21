@@ -6,11 +6,8 @@ import src.service.ArticuloService;
 import src.service.PedidoService;
 import src.util.Validations;
 
-import java.util.Scanner;
-
 public class Main {
    public static void main(String[] args) {
-      Scanner sc = Validations.getScanner();
 
       // Instanciar servicios
       ArticuloService articuloService = new ArticuloService();
