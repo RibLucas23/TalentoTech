@@ -8,16 +8,16 @@ import src.model.Articulo;
 public class Validations {
    private static final Scanner sc = new Scanner(System.in);
 
-   public static int leerStock() {
+   public static int leerEntero(String mensaje, int min, Integer max, String error) {
       while (true) {
+         System.out.print(mensaje);
          try {
-            System.out.print("Stock: ");
-            int stock = sc.nextInt();
+            int valor = sc.nextInt();
             sc.nextLine();
-            if (stock < 0) {
-               System.out.println("El stock debe ser un número entero positivo.");
+            if (valor < min || (max != null && valor > max)) {
+               System.out.println(error);
             } else {
-               return stock;
+               return valor;
             }
          } catch (InputMismatchException e) {
             System.out.println("Entrada inválida. Debe ingresar un número entero.");
@@ -26,20 +26,32 @@ public class Validations {
       }
    }
 
-   public static int leerId() {
+   public static double leerDouble(String mensaje, String error) {
       while (true) {
+         System.out.print(mensaje);
          try {
-            System.out.print("ID: ");
-            int id = sc.nextInt();
+            double valor = sc.nextDouble();
             sc.nextLine();
-            if (id <= 0) {
-               System.out.println("El ID debe ser un número entero positivo.");
+            if (valor < 0) {
+               System.out.println(error);
             } else {
-               return id;
+               return valor;
             }
          } catch (InputMismatchException e) {
-            System.out.println("Entrada inválida. Debe ingresar un número entero.");
+            System.out.println("Entrada inválida. Debe ingresar un número decimal.");
             sc.nextLine();
+         }
+      }
+   }
+
+   public static String leerTexto(String mensaje, String error) {
+      while (true) {
+         System.out.print(mensaje);
+         String texto = sc.nextLine().trim();
+         if (texto.isEmpty()) {
+            System.out.println(error);
+         } else {
+            return texto;
          }
       }
    }
@@ -71,34 +83,8 @@ public class Validations {
       }
    }
 
-   public static String leerNombre() {
-      while (true) {
-         System.out.print("Nombre: ");
-         String nombre = sc.nextLine().trim();
-         if (nombre.isEmpty()) {
-            System.out.println("El nombre no puede estar vacío.");
-         } else {
-            return nombre;
-         }
-      }
-   }
-
-   public static double leerPrecio() {
-      while (true) {
-         try {
-            System.out.print("Precio: ");
-            double precio = sc.nextDouble();
-            sc.nextLine();
-            if (precio < 0) {
-               System.out.println("El precio debe ser un número positivo.");
-            } else {
-               return precio;
-            }
-         } catch (InputMismatchException e) {
-            System.out.println("Entrada inválida. Debe ingresar un número decimal.");
-            sc.nextLine();
-         }
-      }
+   public static int leerOpcion(int min, int max) {
+      return leerEntero("Ingrese opción (" + min + "-" + max + "): ", min, max, "Opción inválida.");
    }
 
    public static boolean confirmar(String mensaje) {
