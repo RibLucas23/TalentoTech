@@ -23,7 +23,7 @@ public class PedidoController {
       while (seguir) {
          articuloService.getArticulos();
          System.out.println("Ingrese el ID del artículo a agregar al pedido:");
-         int idArticulo = Validations.leerId();
+         int idArticulo = Validations.leerEntero("ID: ", 0, null, "El ID debe ser un número entero positivo.");
          Articulo articulo = articuloService.buscarArticuloPorId(idArticulo);
          if (articulo != null) {
             pedidoService.agregarArticuloAPedido(pedido, articulo);

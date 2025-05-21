@@ -19,9 +19,7 @@ public class Main {
       // Instanciar controladores con los servicios
       ArticuloController articuloController = new ArticuloController(articuloService);
       PedidoController pedidoController = new PedidoController(pedidoService, articuloService);
-
-      int opcion = 0;
-      while (opcion != 7) {
+      while (true) {
          System.out.println("\n--- Menú Principal ---");
          System.out.println("1. Crear artículo");
          System.out.println("2. Listar artículos");
@@ -32,22 +30,19 @@ public class Main {
          System.out.println("7. Salir");
          System.out.print("Ingrese una opción: ");
 
-         if (sc.hasNextInt()) {
-            opcion = sc.nextInt();
-            sc.nextLine();
-            switch (opcion) {
-               case 1 -> articuloController.crearArticulo();
-               case 2 -> articuloController.listarArticulos();
-               case 3 -> articuloController.modificarArticulo();
-               case 4 -> articuloController.eliminarArticulo();
-               case 5 -> pedidoController.crearPedido();
-               case 6 -> pedidoController.listarPedidos();
-               case 7 -> System.out.println("Saliendo...");
-               default -> System.out.println("Opción inválida.");
+         int opcion = Validations.leerOpcion(1, 7);
+
+         switch (opcion) {
+            case 1 -> articuloController.crearArticulo();
+            case 2 -> articuloController.listarArticulos();
+            case 3 -> articuloController.modificarArticulo();
+            case 4 -> articuloController.eliminarArticulo();
+            case 5 -> pedidoController.crearPedido();
+            case 6 -> pedidoController.listarPedidos();
+            case 7 -> {
+               System.out.println("Saliendo...");
+               return;
             }
-         } else {
-            System.out.println("Entrada inválida.");
-            sc.nextLine();
          }
       }
    }
