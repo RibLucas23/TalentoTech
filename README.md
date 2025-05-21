@@ -17,6 +17,7 @@ src/
 │
 ├── model/                   # Define las entidades principales del sistema
 │   ├── Articulo.java
+│   │    └── Bebida.java
 │   └── Pedido.java
 │
 ├── util/                    # Utilidades para validaciones y entrada de datos
@@ -35,15 +36,19 @@ Me pareció mejor aplicar esta metodología para que sea más fácil escalar y m
 
 Al ejecutar Main.java, se lanza un menú de consola donde el usuario puede:
 
-Crear un artículo: Ingresar ID único, nombre, precio y stock con validaciones.
+-  Crear un artículo: Ingresar ID único, nombre, precio y stock con validaciones. Si es una bebida, también se solicita vencimiento y volumen.
 
-Listar artículos: Muestra todos los artículos registrados.
+-  Listar artículos: Muestra todos los artículos registrados.
 
-Modificar un artículo: Permite editar nombre, precio y stock de un artículo existente.
+-  Modificar un artículo: Permite editar nombre, precio y stock de un artículo existente.
 
-Eliminar un artículo: Solicita confirmación antes de borrar el artículo.
+-  Eliminar un artículo: Solicita confirmación antes de borrar el artículo.
 
-Salir: Finaliza el programa.
+-  Crear un pedido: Permite seleccionar artículos, definir cantidades y registrar un nuevo pedido.
+
+-  Listar pedidos: Muestra todos los pedidos realizados con su detalle.
+
+-  Salir: Finaliza el programa.
 
 ## 📌 Tecnologías usadas
 
